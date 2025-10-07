@@ -1,43 +1,559 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direitos Digitais - Projeto Acadêmico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Intro de Boas-Vindas -->
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="intro-content">
+            <h1>Bem-vindo ao <span>Direitos Digitais</span></h1>
+            <p>Um projeto acadêmico sobre Direitos Humanos no Universo Digital</p>
+            <button id="entrar-btn" class="btn-entrar">Entrar</button>
+        </div>
+    </div>
 
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+    <!-- Side Menu -->
+    <div class="side-menu">
+        <div class="menu-header">
+            <h3>Direitos Digitais</h3>
+            <button class="close-menu">&times;</button>
+        </div>
+        <ul>
+            <li><a href="#inicio"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="#sobre"><i class="fas fa-info-circle"></i> Sobre o Projeto</a></li>
+            <li><a href="#violacoes"><i class="fas fa-exclamation-triangle"></i> Tipos de Violações</a></li>
+            <li><a href="#questionario"><i class="fas fa-clipboard-list"></i> Questionário</a></li>
+            <li><a href="#relatar"><i class="fas fa-edit"></i> Relatar Violação</a></li>
+            <li><a href="#dashboard"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+            <li><a href="#recursos"><i class="fas fa-book"></i> Recursos Educacionais</a></li>
+        </ul>
+        <div class="theme-switch">
+            <span>Modo Escuro</span>
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+            <h1>Direitos Digitais</h1>
+            <div class="header-actions">
+                <button id="notification-btn" class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">0</span>
+                </button>
+            </div>
+        </header>
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+        <main>
+            <!-- Seção Início -->
+            <section id="inicio" class="hero-section">
+                <div class="hero-content">
+                    <h2>Protegendo Direitos Humanos no Ambiente Digital</h2>
+                    <p>Uma iniciativa acadêmica para entender e combater violações de direitos no universo digital</p>
+                    <div class="hero-buttons">
+                        <a href="#questionario" class="btn-primary">Participar do Questionário</a>
+                        <a href="#recursos" class="btn-secondary">Aprender Mais</a>
+                    </div>
+                </div>
+            </section>
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+            <!-- Seção Sobre -->
+            <section id="sobre" class="about-section">
+                <h2>Sobre o Projeto</h2>
+                <div class="about-content">
+                    <p>O projeto "Direitos Digitais" tem como objetivo investigar como os direitos humanos são aplicados e violados no ambiente digital, buscando entender as percepções da população sobre esse tema crucial na era da informação.</p>
+                    <p>Através de questionários anônimos e relatos voluntários, coletamos dados para análise acadêmica, visando contribuir para políticas públicas e iniciativas de conscientização sobre os direitos no universo digital.</p>
+                    <div class="ods-box">
+                        <h3>Relacionamento com ODS 16</h3>
+                        <p>Este projeto está alinhado com o Objetivo de Desenvolvimento Sustentável 16 (Paz, Justiça e Instituições Eficazes), promovendo sociedades pacíficas e inclusivas para o desenvolvimento sustentável, proporcionando acesso à justiça para todos e construindo instituições eficazes, responsáveis e inclusivas em todos os níveis.</p>
+                        <img src="https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-16.svg" alt="ODS 16">
+                    </div>
+                </div>
+            </section>
 
-jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+            <!-- Seção Tipos de Violações -->
+            <section id="violacoes" class="violations-section">
+                <h2>Principais Violações de Direitos no Ambiente Digital</h2>
+                
+                <div class="violation-card">
+                    <h3>Violacao de Privacidade</h3>
+                    <p>A violação de privacidade ocorre quando informações pessoais são coletadas, compartilhadas ou utilizadas sem consentimento. Isso inclui vazamento de dados, monitoramento não autorizado e uso indevido de informações sensíveis.</p>
+                    <a href="https://www.kaspersky.com.br/resource-center/threats/what-is-cybercrime" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                </div>
+                
+                <div class="violation-card">
+                    <h3>Cyberbullying e Assédio Online</h3>
+                    <p>Práticas de intimidação, humilhação ou perseguição realizadas através de meios digitais. Pode incluir mensagens ofensivas, divulgação de imagens íntimas sem consentimento (revenge porn) e perseguição virtual.</p>
+                    <a href="https://www.kaspersky.com.br/resource-center/threats/what-is-cybercrime" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                </div>
+                
+                <div class="violation-card">
+                    <h3>Ciberataques</h3>
+                    <p>Ações maliciosas contra sistemas computacionais, como hacking, phishing, ransomware e DDoS. Esses ataques podem comprometer dados pessoais, financeiros e até infraestruturas críticas.</p>
+                    <a href="https://www.kaspersky.com.br/resource-center/threats/what-is-cybercrime" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                </div>
+                
+                <div class="violation-card">
+                    <h3>Discurso de Ódio Online</h3>
+                    <p>Manifestações de intolerância baseadas em raça, gênero, orientação sexual, religião ou outras características pessoais, que promovem violência ou discriminação contra indivíduos ou grupos.</p>
+                    <a href="https://www.kaspersky.com.br/resource-center/threats/what-is-cybercrime" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                </div>
+                
+                <div class="violation-card">
+                    <h3>Fraudes e Crimes Financeiros</h3>
+                    <p>Esquemas fraudulentos realizados online para obter ganhos financeiros ilegais, incluindo golpes de investimento, falsificação de identidade para obtenção de crédito e roubo de dados bancários.</p>
+                    <a href="https://www.kaspersky.com.br/resource-center/threats/what-is-cybercrime" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                </div>
+                
+                <div class="violation-card">
+                    <h3>Manipulação de Informações e Desinformação</h3>
+                    <p>Disseminação deliberada de informações falsas ou enganosas, incluindo fake news, deepfakes e campanhas de desinformação que podem influenciar comportamentos, eleições e a opinião pública.</p>
+                    <a href="https://www.kaspersky.com.br/resource-center/threats/what-is-cybercrime" class="btn-saiba-mais" target="_blank">Saiba mais</a>
+                </div>
+                
+                <div class="denuncia-box">
+                    <h3>Foi vítima de alguma violação?</h3>
+                    <p>Se você foi vítima de qualquer tipo de violação de direitos no ambiente digital, você pode fazer uma denúncia formal.</p>
+                    <a href="https://www.gov.br/pf/pt-br/canais_atendimento/comunicacao-de-crimes" class="btn-denuncia" target="_blank">Fazer Denúncia</a>
+                </div>
+            </section>
+
+            <!-- Seção Questionário -->
+            <section id="questionario" class="survey-section">
+                <h2>Questionário sobre Direitos Humanos no Ambiente Digital</h2>
+                <p>Participe do nosso questionário anônimo e ajude-nos a entender melhor como os direitos humanos são percebidos e vivenciados no universo digital.</p>
+                
+                <form id="survey-form">
+                    <div class="form-section">
+                        <h3>Dados Demográficos</h3>
+                        
+                        <div class="form-group">
+                            <label>Faixa etária:</label>
+                            <select name="faixa_etaria" required>
+                                <option value="">Selecione...</option>
+                                <option value="Menos de 18 anos">Menos de 18 anos</option>
+                                <option value="18-25 anos">18-25 anos</option>
+                                <option value="26-35 anos">26-35 anos</option>
+                                <option value="36-45 anos">36-45 anos</option>
+                                <option value="46-60 anos">46-60 anos</option>
+                                <option value="Mais de 60 anos">Mais de 60 anos</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Nível de escolaridade:</label>
+                            <select name="escolaridade" required>
+                                <option value="">Selecione...</option>
+                                <option value="Ensino Fundamental">Ensino Fundamental</option>
+                                <option value="Ensino Médio">Ensino Médio</option>
+                                <option value="Ensino Superior incompleto">Ensino Superior incompleto</option>
+                                <option value="Ensino Superior completo">Ensino Superior completo</option>
+                                <option value="Pós-graduação">Pós-graduação</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Gênero:</label>
+                            <select name="genero" required>
+                                <option value="">Selecione...</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                                <option value="Não especifico">Não especifico</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Conhecimento sobre Direitos Humanos</h3>
+                        
+                        <div class="form-group">
+                            <label>Como você classificaria seu conhecimento sobre direitos humanos?</label>
+                            <div class="scale-options">
+                                <label><input type="radio" name="conhecimento_direitos_humanos" value="1" required> 1 (Muito baixo)</label>
+                                <label><input type="radio" name="conhecimento_direitos_humanos" value="2"> 2</label>
+                                <label><input type="radio" name="conhecimento_direitos_humanos" value="3"> 3</label>
+                                <label><input type="radio" name="conhecimento_direitos_humanos" value="4"> 4</label>
+                                <label><input type="radio" name="conhecimento_direitos_humanos" value="5"> 5 (Muito alto)</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Você conhece a Declaração Universal dos Direitos Humanos?</label>
+                            <select name="conhecimento_declaracao" required>
+                                <option value="">Selecione...</option>
+                                <option value="Sim, conheço bem">Sim, conheço bem</option>
+                                <option value="Sim, mas superficialmente">Sim, mas superficialmente</option>
+                                <option value="Já ouvi falar, mas não conheço seu conteúdo">Já ouvi falar, mas não conheço seu conteúdo</option>
+                                <option value="Não conheço">Não conheço</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Direitos Humanos no Ambiente Digital</h3>
+                        
+                        <div class="form-group">
+                            <label>Você acredita que os direitos humanos se aplicam da mesma forma no ambiente digital e no mundo físico?</label>
+                            <select name="aplicacao_direitos_digital" required>
+                                <option value="">Selecione...</option>
+                                <option value="Sim, totalmente">Sim, totalmente</option>
+                                <option value="Sim, mas com algumas diferenças">Sim, mas com algumas diferenças</option>
+                                <option value="Não, são diferentes">Não, são diferentes</option>
+                                <option value="Não tenho opinião formada">Não tenho opinião formada</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Quais direitos você considera mais ameaçados no ambiente digital? (selecione até 3)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="direitos_mais_ameacados" value="Privacidade"> Privacidade</label>
+                                <label><input type="checkbox" name="direitos_mais_ameacados" value="Liberdade de expressão"> Liberdade de expressão</label>
+                                <label><input type="checkbox" name="direitos_mais_ameacados" value="Acesso à informação"> Acesso à informação</label>
+                                <label><input type="checkbox" name="direitos_mais_ameacados" value="Direito ao esquecimento"> Direito ao esquecimento</label>
+                                <label><input type="checkbox" name="direitos_mais_ameacados" value="Igualdade e não discriminação"> Igualdade e não discriminação</label>
+                                <label><input type="checkbox" name="direitos_mais_ameacados" value="Direito à educação"> Direito à educação</label>
+                                <label><input type="checkbox" name="direitos_mais_ameacados" value="Proteção contra violência e assédio"> Proteção contra violência e assédio</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Como você avaliaria seu nível de preocupação com a proteção dos seus dados pessoais na internet?</label>
+                            <div class="scale-options">
+                                <label><input type="radio" name="preocupacao_dados" value="1" required> 1 (Nada preocupado)</label>
+                                <label><input type="radio" name="preocupacao_dados" value="2"> 2</label>
+                                <label><input type="radio" name="preocupacao_dados" value="3"> 3</label>
+                                <label><input type="radio" name="preocupacao_dados" value="4"> 4</label>
+                                <label><input type="radio" name="preocupacao_dados" value="5"> 5 (Extremamente preocupado)</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Você já teve alguma experiência negativa relacionada à violação de seus direitos no ambiente digital?</label>
+                            <select name="experiencia_negativa" required>
+                                <option value="">Selecione...</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                                <option value="Prefiro não responder">Prefiro não responder</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Você acha que as pessoas estão suficientemente educadas sobre seus direitos no ambiente digital?</label>
+                            <select name="educacao_direitos_digital" required>
+                                <option value="">Selecione...</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                                <option value="Parcialmente">Parcialmente</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Responsabilidade e Regulação</h3>
+                        
+                        <div class="form-group">
+                            <label>Quem você acredita que deveria ter a principal responsabilidade pela proteção dos direitos humanos no ambiente digital? (escolha até 2)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="responsabilidade_protecao" value="Governos e órgãos reguladores"> Governos e órgãos reguladores</label>
+                                <label><input type="checkbox" name="responsabilidade_protecao" value="Empresas de tecnologia"> Empresas de tecnologia</label>
+                                <label><input type="checkbox" name="responsabilidade_protecao" value="Organizações internacionais"> Organizações internacionais</label>
+                                <label><input type="checkbox" name="responsabilidade_protecao" value="Cada indivíduo"> Cada indivíduo</label>
+                                <label><input type="checkbox" name="responsabilidade_protecao" value="Sociedade civil organizada"> Sociedade civil organizada</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Você acredita que as atuais regulamentações são suficientes para proteger os direitos humanos no ambiente digital?</label>
+                            <select name="regulamentacoes_suficientes" required>
+                                <option value="">Selecione...</option>
+                                <option value="Sim, são adequadas">Sim, são adequadas</option>
+                                <option value="Não, precisam ser aprimoradas">Não, precisam ser aprimoradas</option>
+                                <option value="Não, são praticamente inexistentes">Não, são praticamente inexistentes</option>
+                                <option value="Não tenho conhecimento suficiente para opinar">Não tenho conhecimento suficiente para opinar</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Inteligência Artificial e Futuro Digital</h3>
+                        
+                        <div class="form-group">
+                            <label>Qual o seu nível de preocupação com o impacto da inteligência artificial nos direitos humanos?</label>
+                            <div class="scale-options">
+                                <label><input type="radio" name="preocupacao_ia" value="1" required> 1 (Nada preocupado)</label>
+                                <label><input type="radio" name="preocupacao_ia" value="2"> 2</label>
+                                <label><input type="radio" name="preocupacao_ia" value="3"> 3</label>
+                                <label><input type="radio" name="preocupacao_ia" value="4"> 4</label>
+                                <label><input type="radio" name="preocupacao_ia" value="5"> 5 (Extremamente preocupado)</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Quais aspectos da IA você considera mais preocupantes do ponto de vista dos direitos humanos? (selecione até 3)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="aspectos_preocupantes_ia" value="Vieses e discriminação algorítmica"> Vieses e discriminação algorítmica</label>
+                                <label><input type="checkbox" name="aspectos_preocupantes_ia" value="Substituição de empregos"> Substituição de empregos</label>
+                                <label><input type="checkbox" name="aspectos_preocupantes_ia" value="Vigilância em massa"> Vigilância em massa</label>
+                                <label><input type="checkbox" name="aspectos_preocupantes_ia" value="Manipulação de comportamento"> Manipulação de comportamento</label>
+                                <label><input type="checkbox" name="aspectos_preocupantes_ia" value="Concentração de poder nas grandes empresas de tecnologia"> Concentração de poder nas grandes empresas de tecnologia</label>
+                                <label><input type="checkbox" name="aspectos_preocupantes_ia" value="Armas autônomas"> Armas autônomas</label>
+                                <label><input type="checkbox" name="aspectos_preocupantes_ia" value="Desinformação automatizada"> Desinformação automatizada</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="btn-submit">Enviar Questionário</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Seção Relatar Violação -->
+            <section id="relatar" class="report-section">
+                <h2>Relatar Violação de Direitos Digitais</h2>
+                <p>Se você deseja relatar uma violação de direitos humanos no ambiente digital de forma anônima, utilize o formulário abaixo. Seus dados pessoais não serão coletados.</p>
+                
+                <form id="report-form">
+                    <div class="form-group">
+                        <label>Tipo de violação:</label>
+                        <select name="tipo_violacao" required>
+                            <option value="">Selecione...</option>
+                            <option value="Violacao de Privacidade">Violação de Privacidade</option>
+                            <option value="Cyberbullying e Assédio Online">Cyberbullying e Assédio Online</option>
+                            <option value="Ciberataque">Ciberataque</option>
+                            <option value="Discurso de Ódio Online">Discurso de Ódio Online</option>
+                            <option value="Fraude ou Crime Financeiro">Fraude ou Crime Financeiro</option>
+                            <option value="Manipulação de Informações">Manipulação de Informações</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Descrição da violação:</label>
+                        <textarea name="descricao" rows="5" required placeholder="Descreva o que aconteceu, sem incluir informações pessoais..."></textarea>
+                    </div>
+                    
+                    <div class="optional-fields">
+                        <h4>Dados opcionais (para estatísticas):</h4>
+                        
+                        <div class="form-group">
+                            <label>Faixa etária:</label>
+                            <select name="faixa_etaria">
+                                <option value="">Prefiro não informar</option>
+                                <option value="Menos de 18 anos">Menos de 18 anos</option>
+                                <option value="18-25 anos">18-25 anos</option>
+                                <option value="26-35 anos">26-35 anos</option>
+                                <option value="36-45 anos">36-45 anos</option>
+                                <option value="46-60 anos">46-60 anos</option>
+                                <option value="Mais de 60 anos">Mais de 60 anos</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Gênero:</label>
+                            <select name="genero">
+                                <option value="">Prefiro não informar</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Feminino">Feminino</option>
+                                <option value="Não especifico">Não especifico</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="btn-submit">Enviar Relato</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Seção Dashboard -->
+            <section id="dashboard" class="dashboard-section">
+                <h2>Dashboard de Dados</h2>
+                <p>Visualização em tempo real dos dados coletados através dos questionários e relatos de violação.</p>
+                
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <h3>Total de Questionários</h3>
+                        <p id="total-questionarios">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total de Relatos</h3>
+                        <p id="total-relatos">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Conhecimento Médio sobre DH</h3>
+                        <p id="conhecimento-medio">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Preocupação Média com Dados</h3>
+                        <p id="preocupacao-media">0</p>
+                    </div>
+                </div>
+                
+                <div class="dashboard-charts">
+                    <div class="chart-container">
+                        <h3>Tipos de Violações Reportadas</h3>
+                        <canvas id="violations-chart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Direitos Mais Ameaçados (Segundo os Participantes)</h3>
+                        <canvas id="rights-chart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Preocupação com IA por Faixa Etária</h3>
+                        <canvas id="ia-age-chart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Responsabilidade pela Proteção dos Direitos</h3>
+                        <canvas id="responsibility-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="dashboard-export">
+                    <button id="export-btn" class="btn-export">Exportar Dados para Análise</button>
+                </div>
+            </section>
+
+            <!-- Seção Recursos Educacionais -->
+            <section id="recursos" class="resources-section">
+                <h2>Recursos Educacionais</h2>
+                <p>Materiais para aprender mais sobre direitos humanos no ambiente digital:</p>
+                
+                <div class="resources-grid">
+                    <div class="resource-card interactive">
+                        <h3>Quiz: Seus Direitos Digitais</h3>
+                        <p>Teste seu conhecimento sobre direitos humanos no ambiente digital com este quiz interativo.</p>
+                        <button class="btn-resource" onclick="startQuiz()">Iniciar Quiz</button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Declaração Universal dos Direitos Humanos</h3>
+                        <p>Leia o documento fundamental que estabelece os direitos humanos básicos.</p>
+                        <a href="https://www.un.org/pt/about-us/universal-declaration-of-human-rights" class="btn-resource" target="_blank">Acessar</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Guia de Segurança Digital</h3>
+                        <p>Aprenda a proteger seus dados e privacidade online.</p>
+                        <a href="https://www.safernet.org.br/site/prevencao/cartilha-seguranca-digital" class="btn-resource" target="_blank">Acessar</a>
+                    </div>
+                    
+                    <div class="resource-card interactive">
+                        <h3>Simulador de Privacidade</h3>
+                        <p>Veja como suas configurações de privacidade afetam sua segurança online.</p>
+                        <button class="btn-resource" onclick="startPrivacySimulator()">Experimentar</button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>LGPD - Lei Geral de Proteção de Dados</h3>
+                        <p>Entenda a legislação brasileira que protege seus dados pessoais.</p>
+                        <a href="https://www.gov.br/cidadania/pt-br/acesso-a-informacao/lgpd" class="btn-resource" target="_blank">Acessar</a>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Como Denunciar Crimes Digitais</h3>
+                        <p>Guia passo a passo para reportar violações de direitos online.</p>
+                        <a href="https://www.gov.br/pf/pt-br/canais_atendimento/comunicacao-de-crimes" class="btn-resource" target="_blank">Acessar</a>
+                    </div>
+                    
+                    <div class="resource-card interactive">
+                        <h3>Mapa de Violações Digitais</h3>
+                        <p>Visualize relatos de violações de direitos humanos no ambiente digital pelo Brasil.</p>
+                        <button class="btn-resource" onclick="showViolationsMap()">Visualizar Mapa</button>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <h3>Glossário de Termos Digitais</h3>
+                        <p>Conheça os principais termos relacionados a direitos e segurança digital.</p>
+                        <a href="https://www.cgi.br/glossario/" class="btn-resource" target="_blank">Acessar</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Direitos Digitais</h3>
+                    <p>Protegendo direitos humanos no universo digital</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="https://www.un.org/pt/about-us/universal-declaration-of-human-rights" target="_blank">Declaração Universal dos DH</a></li>
+                        <li><a href="https://www.gov.br/cidadania/pt-br/acesso-a-informacao/lgpd" target="_blank">Lei Geral de Proteção de Dados</a></li>
+                        <li><a href="https://www.safernet.org.br/site/" target="_blank">SaferNet Brasil</a></li>
+                        <li><a href="https://www.gov.br/pf/pt-br/canais_atendimento/comunicacao-de-crimes" target="_blank">Denúncias de Crimes Digitais</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contato Acadêmico</h4>
+                    <p>projeto.direitosdigitais@academico.edu.br</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Projeto Acadêmico sobre Direitos Humanos e o Universo Digital - © 2025 - Todos os direitos reservados</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal de Notificações -->
+    <div id="notifications-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Notificações</h3>
+            <div id="notifications-list" class="notifications-list">
+                <p>Nenhuma notificação no momento.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Quiz -->
+    <div id="quiz-modal" class="modal">
+        <div class="modal-content quiz-content">
+            <span class="close-modal">&times;</span>
+            <div id="quiz-container"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Simulador de Privacidade -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content privacy-content">
+            <span class="close-modal">&times;</span>
+            <div id="privacy-simulator"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Mapa de Violações -->
+    <div id="map-modal" class="modal">
+        <div class="modal-content map-content">
+            <span class="close-modal">&times;</span>
+            <h3>Mapa de Violações Digitais</h3>
+            <div id="violations-map"></div>
+        </div>
+    </div>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chart.js"></script>
+</body>
+</html>
